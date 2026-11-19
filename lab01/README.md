@@ -18,8 +18,8 @@ Then open <http://localhost:3000> and <http://localhost:3000/api/me>.
 
 ## What I learned today
 
-_Write 2–3 sentences in your own words: what happens between typing a URL and seeing the page?_
+browser finds the website's server, requests the website's files, receives them, and turns those files into the webpage you see
 
 ## AI-use statement
 
-_Did you use an AI tool in this lab? If yes, which one and for what (e.g., "ChatGPT to explain a Git error message"). If no, write "No AI tools used."_
+_No AI tools used._
