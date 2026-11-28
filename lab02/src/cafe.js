@@ -87,17 +87,20 @@ export function averageOrder(orders, menu) {
 // Task 9 — return the NAME of the item with the highest total quantity sold.
 export function bestSeller(orders, menu) {
   // TODO
-  const sales = orders.flatMap((order) => order.items)
-    .reduce((acc, item) => {
-      acc[item.menuId] = (acc[item.menuId] || 0) + item.qty;
-      return acc;
-    }, {});
+  const sales = menu.map((item) => ({
+    ...item,
+    qty: orders.reduce(
+      (sum, order) =>
+        sum + order.items.reduce(
+          (total, line) =>
+            total + (line.menuId === item.id ? line.qty : 0), 0
+        ), 0
+    )
+  }));
 
-  const id = Object.keys(sales).reduce((a, b) =>
-    sales[a] > sales[b] ? a : b
-  );
-
-  return findItem(menu, id)?.name;
+  return sales.reduce((best, item) =>
+    item.qty > best.qty ? item : best
+  ).name;
 }
 
 // Task 10 — group item names by category:
